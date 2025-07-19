@@ -9,11 +9,12 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || "/";
-  
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    setError, // ✅ এটা যোগ করলাম manual error দেখানোর জন্য
+    formState: { errors }, // ✅ form-এর error গুলো ধরে রাখতে
   } = useForm();
 
   const onsubmit = (data) => {
@@ -25,6 +26,22 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+
+        // ✅ যদি password ভুল হয়, তাহলে এইখানে error দেখাবো
+        if (error.code === "auth/invalid-credential") {
+          setError("password", {
+            type: "manual",
+            message: "Invalid email or password.",
+          });
+        }
+
+        // ✅ Optional: user না পাইলে email field এ error দেখাতে পারো
+        if (error.code === "auth/invalid-credential") {
+          setError("email", {
+            type: "manual",
+            message: "",
+          });
+        }
       });
   };
 
@@ -36,33 +53,43 @@ const Login = () => {
         </h2>
         <form onSubmit={handleSubmit(onsubmit)} className="space-y-4">
           <div>
-            <label className="block mb-1 font-medium text-gray-700">Email</label>
+            <label className="block mb-1 font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               {...register("email")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Email"
             />
+            {/* ✅ যদি email ভুল হয় */}
+            {errors.email && (
+              <p className="text-rose-700 mt-1 text-sm">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label className="block mb-1 font-medium text-gray-700">Password</label>
+            <label className="block mb-1 font-medium text-gray-700">
+              Password
+            </label>
             <input
               type="password"
-              {...register("password", { required: true, minLength: 6 })}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Minimum password length is six. So put more..",
+                },
+                pattern: {
+                  value: /^[^A-Z]*$/,
+                  message: "Do not use capital letters in password", // ✅ এটা লাগবেই!
+                },
+              })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Password"
             />
-            {errors.password?.type === "required" && (
-              <p className="text-rose-700 mt-1 text-sm">
-                Wait! Where is your password?
-              </p>
-            )}
-            {errors.password?.type === "minLength" && (
-              <p className="text-rose-700 mt-1 text-sm">
-                Minimum password length is six. So put more..
-              </p>
-            )}
           </div>
 
           <div className="text-right">
@@ -85,8 +112,8 @@ const Login = () => {
             </Link>
           </p>
 
-          <SocialLogin />
         </form>
+          <SocialLogin />
       </div>
     </div>
   );

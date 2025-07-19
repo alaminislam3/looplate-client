@@ -102,18 +102,23 @@ const Register = () => {
             <label className="block mb-1 font-medium text-gray-700">Password</label>
             <input
               type="password"
-              {...register("password", { required: true, minLength: 6 })}
+              {...register("password", { required: true, minLength: 6 , pattern: {  value: /^[^A-Z]*$/} })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Password"
             />
             {errors.password?.type === "required" && (
               <p className="text-red-600 mt-1 text-sm">
-                Password dicchen na keno?
+                You should have to fillup password!
               </p>
             )}
             {errors.password?.type === "minLength" && (
               <p className="text-red-600 mt-1 text-sm">
                 Password should be minimum six characters or more.
+              </p>
+            )}
+            {errors.password?.type === "pattern" && (
+              <p className="text-red-600 mt-1 text-sm">
+               Please don't use capital latter.
               </p>
             )}
           </div>
@@ -134,9 +139,9 @@ const Register = () => {
             Register
           </button>
 
+        </form>
           {/* Social login */}
           <SocialLogin />
-        </form>
       </div>
     </div>
   );

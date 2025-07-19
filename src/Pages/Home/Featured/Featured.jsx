@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Login = () => {
+const Featured = () => {
+   
     return (
         <div>
             
@@ -8,4 +9,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Featured;

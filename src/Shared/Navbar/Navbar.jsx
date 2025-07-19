@@ -1,13 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../Logo/Logo";
-// import UseAuth from "../../../Hooks/UseAuth";
-/* Home, All Donations, Dashboard, and Login  */
+import { Authcontext } from "../../Context/AuthContext";
+
 const Navbar = () => {
-  //   const { user, logout } = UseAuth();
-  //   const handleLogout = () => {
-  //     logout();
-  //   };
+  const { user, logout } = use(Authcontext);
+  const handleLogout = () => {
+    logout();
+  };
   const links = (
     <>
       <NavLink
@@ -45,10 +45,10 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-gray-200 text-gray-800 px-6 py-4 shadow-sm">
+    <div className=" sticky top-0 z-50  navbar bg-gray-200 text-gray-800 px-6 py-4 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
-          {/* <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          {<div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -64,7 +64,7 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />{" "}
             </svg>
-          </div> */}
+          </div>}
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 gap-2 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -78,13 +78,29 @@ const Navbar = () => {
         <ul className="menu gap-2 menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        {/* <button  className="btn btn-primary text-black">
-            Logout
-          </button> */}
-
-        <Link to={"/login"}>
-          <button className="btn btn-primary text-black">Login</button>
-        </Link>
+        {user ? 
+            <div className="group flex items-center gap-3">
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user?.displayName}
+              >
+                <img
+                  src={user?.photoURL}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full border-2 border-green-400"
+                />
+              </div>
+              <button
+                onClick={handleLogout}
+                className="btn btn-primary hover:bg-sky-600"
+              >
+                Logout
+              </button>
+            </div>: (
+          <Link to="/login">
+            <button className="btn btn-primary text-black">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

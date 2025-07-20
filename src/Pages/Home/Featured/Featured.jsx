@@ -18,8 +18,8 @@ const Featured = () => {
   if (isError) return <p className="text-center text-red-500 py-10">Something went wrong!</p>;
 
   return (
-    <section className="px-4 md:px-8 lg:px-16 md:py-15">
-      <h2 className="text-2xl md:text-3xl font-bold md:mb-10 text-center text-primary">Pick from Today’s Specials</h2>
+    <section className="px-4 md:px-8 lg:px-16 md:py-20 py-10">
+      <h2 className="text-2xl md:text-3xl font-bold mb-10  text-center text-primary">Pick from Today’s Specials</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {donations.map((donation) => (
           <div
@@ -47,7 +47,7 @@ const Featured = () => {
               </p>
               <Link
                 to={`/donation/${donation._id}`}
-                className="mt-auto inline-block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="mt-auto inline-block text-center bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
               >
                 View Details
               </Link>

@@ -1,37 +1,44 @@
-import React, { useState, useContext } from "react";
+import React, { useState,  } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
-import UseAxios from "../../../Hooks/UseAxios";
-import { Authcontext } from "../../../Context/AuthContext";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import UseAxios from "../../../Hooks/UseAxios";
+import UseAuth from "../../../Hooks/UseAuth";
 
 const Register = () => {
   const navigate = useNavigate();
   const [profilePic, setProfilePic] = useState("");
-  const { registration, updateUserProfile } = useContext(Authcontext);
-  const axiosInstance = UseAxios();
+  const { registration, updateUserProfile } = UseAuth()
+  const axiosSecure =UseAxiosSecure()
+  const axiosInstance= UseAxios()
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register,handleSubmit,formState: { errors } } = useForm();
 
   const onsubmit = (data) => {
     registration(data.email, data.password)
       .then(async (result) => {
         console.log(result.user);
-        navigate("/");
+  
+        // ✅ Step 2: Get JWT token from server and store it
+        const loggedUser = { email: result.user.email };
+        const tokenRes = await axiosInstance.post("/jwt", loggedUser);
+        localStorage.setItem("access-token", tokenRes.data.token);
+  
+        navigate("/"); // redirect after login
+  
+        // ✅ save user to database using axiosSecure
         const userInfo = {
           email: data.email,
           role: "user",
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),
         };
-        const userRes = await axiosInstance.post("users", userInfo);
+        const userRes = await axiosSecure.post("/users", userInfo);
         console.log(userRes.data);
-
+  
+        // ✅ update profile
         const userProfile = {
           displayName: data.name,
           photoURL: profilePic,
@@ -44,10 +51,9 @@ const Register = () => {
             console.log(error);
           });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      
   };
+  
 
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];

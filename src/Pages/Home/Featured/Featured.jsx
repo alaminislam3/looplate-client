@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
+import Loading from '../../../Shared/Loading/Loading';
 
 
 const Featured = () => {
@@ -14,7 +15,7 @@ const Featured = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading) return <Loading></Loading>;
   if (isError) return <p className="text-center text-red-500 py-10">Something went wrong!</p>;
 
   return (

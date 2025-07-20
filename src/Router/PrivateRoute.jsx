@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router';
 import UseAuth from '../Hooks/useAuth';
+import Loading from '../Shared/Loading/Loading';
 
 const PrivateRoute = ({children}) => {
          const {user,loading}=UseAuth()
@@ -8,7 +9,7 @@ const PrivateRoute = ({children}) => {
      //     console.log(location);
 
     if(loading){
-      return <span className="loading loading-bars loading-xl"></span>
+      return <Loading></Loading>
          }
          if(!user){
     return <Navigate to={'/login'} state={{ from: location.pathname }}></Navigate>

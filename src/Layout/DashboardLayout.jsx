@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router";
 import { FaHandHoldingHeart, FaHome, FaListAlt, FaPlusCircle, FaUserCircle } from "react-icons/fa";
-import UseUserRole from "../Hooks/UseUserRole";
 import Logo from "../Shared/Logo/Logo";
+import UseUserRole from "../Hooks/UseUserRole";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = UseUserRole();

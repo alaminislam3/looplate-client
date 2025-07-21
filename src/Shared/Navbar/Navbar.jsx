@@ -2,12 +2,15 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../Logo/Logo";
 import { Authcontext } from "../../Context/AuthContext";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
-  const { user, logout } = use(Authcontext);
+  const { user, logout  } = use(Authcontext);
+  
   const handleLogout = () => {
     logout();
   };
+
   const links = (
     <>
       <NavLink

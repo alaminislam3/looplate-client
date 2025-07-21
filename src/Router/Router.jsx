@@ -13,6 +13,7 @@ import MyDonation from "../Pages/Dashboard/Restaurant/MyDonation";
 import RequestDonation from "../Pages/Dashboard/Restaurant/RequestDonation";
 import PrivateRoute from "./PrivateRoute";
 import Forbidden from "../Shared/Forbidden/Forbidden";
+import UpdateDonation from "../Pages/Dashboard/Restaurant/UpdateDonation";
 
 
 export const router = createBrowserRouter([
@@ -59,6 +60,9 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/requestdonation' , Component: RequestDonation
       },
+      {
+        path: '/dashboard/update/id' , Component: UpdateDonation
+      }
     ]
   },
 

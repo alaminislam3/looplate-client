@@ -14,7 +14,12 @@ import RequestDonation from "../Pages/Dashboard/Restaurant/RequestDonation";
 import PrivateRoute from "./PrivateRoute";
 import Forbidden from "../Shared/Forbidden/Forbidden";
 import UpdateDonation from "../Pages/Dashboard/Restaurant/UpdateDonation";
-
+import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile";
+import ManageDonation from "../Pages/Dashboard/Admin/ManageDonation";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import ManageRoleRequests from "../Pages/Dashboard/Admin/ManageRoleRequests";
+import ManageRequests from "../Pages/Dashboard/Admin/ManageRequests";
+import FeatureDonations from "../Pages/Dashboard/Admin/FeatureDonations";
 
 export const router = createBrowserRouter([
   {
@@ -30,40 +35,74 @@ export const router = createBrowserRouter([
         Component: AllDonation,
       },
       {
-        path: '/login' , Component: Login
+        path: "/login",
+        Component: Login,
       },
       {
-        path: '/register' , Component: Register
+        path: "/register",
+        Component: Register,
       },
       {
-        path: '/forbidden' , Component: Forbidden
-      }
+        path: "/forbidden",
+        Component: Forbidden,
+      },
     ],
   },
   {
     path: "/dashboard",
-    Component: DashboardLayout,
+    element: <PrivateRoute>  <DashboardLayout></DashboardLayout>  </PrivateRoute>,
     children: [
       {
-        index: true, element: <PrivateRoute> <DashboardHome></DashboardHome> </PrivateRoute>
+        index: true,
+        Component: DashboardHome
+        
       },
-      // Restaurant 
-      {
+      // Restaurant
+      /*  {
         path: '/dashboard/restaurantprofile' , Component: RestaurantProfile
+      }, */
+      {
+        path: "/dashboard/adddonation",
+        Component: AddDonation,
       },
       {
-        path: '/dashboard/adddonation' , Component: AddDonation
+        path: "/dashboard/mydonation",
+        Component: MyDonation,
       },
       {
-        path: '/dashboard/mydonation' , Component: MyDonation
+        path: "/dashboard/requestdonation",
+        Component: RequestDonation,
       },
       {
-        path: '/dashboard/requestdonation' , Component: RequestDonation
+        path: "/dashboard/update/:id",
+        Component: UpdateDonation,
+      },
+      /* admin route  */
+      {
+        path: "adminprofile",
+        element: <AdminProfile />,
       },
       {
-        path: '/dashboard/update/id' , Component: UpdateDonation
-      }
-    ]
+        path: "managedonations",
+        element: <ManageDonation />,
+      },
+      {
+        path: "manageusers",
+        element: <ManageUsers />,
+      },
+      {
+        path: "managerolerequests",
+        element: <ManageRoleRequests />,
+      },
+      {
+        path: "managerequests",
+        element: <ManageRequests />,
+      },
+      {
+        path: "featureddonations",
+        element: <FeatureDonations />,
+      },
+    ],
   },
 
   {

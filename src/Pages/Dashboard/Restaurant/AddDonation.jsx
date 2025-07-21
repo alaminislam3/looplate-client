@@ -4,11 +4,13 @@ import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import UseAuth from "../../../Hooks/UseAuth";
 import Loading from "../../../Shared/Loading/Loading";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const AddDonation = () => {
   const { user, loading  } = UseAuth()
   const axiosSecure = UseAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate()
 
   if(loading){
     return <Loading></Loading>
@@ -51,6 +53,7 @@ const AddDonation = () => {
           confirmButtonText: "OK",
           timer: 1500
         });
+        navigate('/dashboard/mydonation')
         reset();
       }
 

@@ -1,6 +1,18 @@
 import React from "react";
 import { Link, Outlet } from "react-router";
-import { FaHandHoldingHeart, FaHome, FaListAlt, FaPlusCircle, FaUserCircle } from "react-icons/fa";
+import {
+  FaClipboardList,
+  FaDonate,
+  FaHandHoldingHeart,
+  FaHome,
+  FaListAlt,
+  FaPlusCircle,
+  FaStar,
+  FaUserCircle,
+  FaUserCog,
+  FaUsers,
+  FaUserShield,
+} from "react-icons/fa";
 import Logo from "../Shared/Logo/Logo";
 import UseUserRole from "../Hooks/UseUserRole";
 
@@ -91,10 +103,45 @@ const DashboardLayout = () => {
           {!roleLoading && role === "admin" && (
             <>
               <Link
-                to={"/dashboard/assignrider"}
+                to="/dashboard/adminprofile"
                 className="flex items-center gap-2"
               >
-                <p>Assign Rider</p>
+                <FaUserShield /> <p>Admin Profile</p>
+              </Link>
+
+              <Link
+                to="/dashboard/managedonations"
+                className="flex items-center gap-2"
+              >
+                <FaDonate /> <p>Manage Donations</p>
+              </Link>
+
+              <Link
+                to="/dashboard/manageusers"
+                className="flex items-center gap-2"
+              >
+                <FaUsers /> <p>Manage Users</p>
+              </Link>
+
+              <Link
+                to="/dashboard/managerolerequests"
+                className="flex items-center gap-2"
+              >
+                <FaUserCog /> <p>Manage Role Requests</p>
+              </Link>
+
+              <Link
+                to="/dashboard/managerequests"
+                className="flex items-center gap-2"
+              >
+                <FaClipboardList /> <p>Manage Requests</p>
+              </Link>
+
+              <Link
+                to="/dashboard/featureddonations"
+                className="flex items-center gap-2"
+              >
+                <FaStar /> <p>Feature Donations</p>
               </Link>
             </>
           )}

@@ -80,7 +80,7 @@ const MyDonations = () => {
 
               <div className="mt-4 flex gap-3">
                 {donation.status !== "Rejected" && (
-                  <Link to={`/update/${donation._id}`}>
+                  <Link to={`/dashboard/update/${donation._id}`}>
                     <button className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">
                       Update
                     </button>

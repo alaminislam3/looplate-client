@@ -2,12 +2,16 @@ import React from "react";
 import { Link, Outlet } from "react-router";
 import {
   FaClipboardList,
+  FaCommentDots,
   FaDonate,
   FaHandHoldingHeart,
+  FaHeart,
   FaHome,
   FaListAlt,
+  FaMoneyCheckAlt,
   FaPlusCircle,
   FaStar,
+  FaUser,
   FaUserCircle,
   FaUserCog,
   FaUsers,
@@ -65,7 +69,6 @@ const DashboardLayout = () => {
             <FaHome />
             <p>Home</p>
           </Link>
-
           {/* Restaurant Route  */}
           {!roleLoading && role === "restaurant" && (
             <>
@@ -98,7 +101,6 @@ const DashboardLayout = () => {
               </Link>
             </>
           )}
-
           {/* Admin links  */}
           {!roleLoading && role === "admin" && (
             <>
@@ -142,6 +144,45 @@ const DashboardLayout = () => {
                 className="flex items-center gap-2"
               >
                 <FaStar /> <p>Feature Donations</p>
+              </Link>
+            </>
+          )}
+          
+          {!roleLoading && role === "user" && (
+            <>
+              <Link
+                to="/dashboard/myprofile"
+                className="flex items-center gap-2"
+              >
+                <FaUser /><p>My Profile</p>
+              </Link>
+
+              <Link
+                to="/dashboard/requestcharity"
+                className="flex items-center gap-2"
+              >
+                <FaHandHoldingHeart /> <p>Request Charity Role</p>
+              </Link>
+
+              <Link
+                to="/dashboard/favorites"
+                className="flex items-center gap-2"
+              >
+                <FaHeart /> <p>Favorites</p>
+              </Link>
+
+              <Link
+                to="/dashboard/myreviews"
+                className="flex items-center gap-2"
+              >
+                <FaCommentDots /> <p>My Reviews</p>
+              </Link>
+
+              <Link
+                to="/dashboard/transactions"
+                className="flex items-center gap-2"
+              >
+                <FaMoneyCheckAlt /> <p>Transaction History</p>
               </Link>
             </>
           )}

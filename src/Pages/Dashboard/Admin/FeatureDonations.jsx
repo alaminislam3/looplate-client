@@ -10,14 +10,20 @@ const FeatureDonations = () => {
   const [featuredIds, setFeaturedIds] = useState([]);
 
   // Get only verified donations
-  const { data: verifiedDonations = [], isLoading } = useQuery({
+  const {
+    data: verifiedDonations = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["verifiedDonations"],
     queryFn: async () => {
       const res = await axiosSecure.get("/donations");
       const allDonations = res.data;
-      const verified = allDonations.filter(item => item.status === "Verified");
+      const verified = allDonations.filter(
+        (item) => item.status === "Verified"
+      );
       return verified;
-    }
+    },
   });
 
   // Mutation for featuring donation
@@ -27,13 +33,18 @@ const FeatureDonations = () => {
       return res.data;
     },
     onSuccess: (_, id) => {
-      setFeaturedIds(prev => [...prev, id]); // ✅ disable after success
+      setFeaturedIds((prev) => [...prev, id]); // ✅ disable after success
       queryClient.invalidateQueries({ queryKey: ["verifiedDonations"] });
-      Swal.fire("Featured!", "The donation has been added to homepage.", "success");
+      Swal.fire(
+        "Featured!",
+        "The donation has been added to homepage.",
+        "success"
+      );
+      refetch();
     },
     onError: () => {
       Swal.fire("Error!", "Failed to feature the donation.", "error");
-    }
+    },
   });
 
   if (isLoading) {
@@ -55,25 +66,29 @@ const FeatureDonations = () => {
             </tr>
           </thead>
           <tbody>
-            {verifiedDonations.map(donation => (
+            {verifiedDonations.map((donation) => (
               <tr key={donation._id}>
                 <td>
-                  <img src={donation.image} alt={donation.title} className="w-20 h-16 object-cover rounded" />
+                  <img
+                    src={donation.image}
+                    alt={donation.title}
+                    className="w-20 h-16 object-cover rounded"
+                  />
                 </td>
                 <td>{donation.title}</td>
                 <td>{donation.food_type}</td>
                 <td>{donation.restaurant_name}</td>
                 <td>
                   <button
+                    disabled={donation.isFeatured}
                     onClick={() => featureDonation.mutate(donation._id)}
-                    disabled={featuredIds.includes(donation._id)}
-                    className={`${
-                      featuredIds.includes(donation._id)
+                    className={`px-3 py-1 rounded text-white ${
+                      donation.isFeatured
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-green-500 hover:bg-green-600"
-                    } text-white px-3 py-1 rounded`}
+                    }`}
                   >
-                    {featuredIds.includes(donation._id) ? "Featured" : "Feature"}
+                    {donation.isFeatured ? "Featured" : "Feature"}
                   </button>
                 </td>
               </tr>

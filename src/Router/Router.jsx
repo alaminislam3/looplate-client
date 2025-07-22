@@ -20,6 +20,11 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageRoleRequests from "../Pages/Dashboard/Admin/ManageRoleRequests";
 import ManageRequests from "../Pages/Dashboard/Admin/ManageRequests";
 import FeatureDonations from "../Pages/Dashboard/Admin/FeatureDonations";
+import UserProfile from "../Pages/Dashboard/User/UserProfile";
+import RequestCharityRole from "../Pages/Dashboard/User/RequestCharityRole";
+import Favorites from "../Pages/Dashboard/User/Favorites";
+import MyReviews from "../Pages/Dashboard/User/MyReviews";
+import TransactionHistory from "../Pages/Dashboard/User/TransactionHistory";
 
 export const router = createBrowserRouter([
   {
@@ -58,9 +63,9 @@ export const router = createBrowserRouter([
         
       },
       // Restaurant
-      /*  {
+       {
         path: '/dashboard/restaurantprofile' , Component: RestaurantProfile
-      }, */
+      },
       {
         path: "/dashboard/adddonation",
         Component: AddDonation,
@@ -101,6 +106,27 @@ export const router = createBrowserRouter([
       {
         path: "featureddonations",
         element: <FeatureDonations />,
+      },
+      // user role 
+      {
+        path: "myprofile",
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "requestcharity",
+        element: <RequestCharityRole></RequestCharityRole>,
+      },
+      {
+        path: "favorites",
+        element: <Favorites></Favorites>,
+      },
+      {
+        path: "myreviews",
+        element: <MyReviews />,
+      },
+      {
+        path: "transactions",
+        element: <TransactionHistory />,
       },
     ],
   },

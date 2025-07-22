@@ -17,12 +17,12 @@ const ManageDonation = () => {
   
 
   const handleVerify = async (id) => {
-    await axiosInstance.patch(`/donations/verify/${id}`, { status: "Verified" });
+    await axiosInstance.patch(`/donations/status/${id}`, { status: "Verified" });
     setRefresh(!refresh);
   };
 
   const handleReject = async (id) => {
-    await axiosInstance.patch(`/donations/reject/${id}`, { status: "Rejected" });
+    await axiosInstance.patch(`/donations/status/${id}`, { status: "Rejected" });
     setRefresh(!refresh);
   };
 

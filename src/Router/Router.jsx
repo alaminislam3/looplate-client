@@ -25,6 +25,7 @@ import RequestCharityRole from "../Pages/Dashboard/User/RequestCharityRole";
 import Favorites from "../Pages/Dashboard/User/Favorites";
 import MyReviews from "../Pages/Dashboard/User/MyReviews";
 import TransactionHistory from "../Pages/Dashboard/User/TransactionHistory";
+import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,9 @@ export const router = createBrowserRouter([
         path: "/forbidden",
         Component: Forbidden,
       },
+      {
+        path: '/donation-details/:id' , Component: DonationDetails
+      }
     ],
   },
   {
@@ -128,6 +132,7 @@ export const router = createBrowserRouter([
         path: "transactions",
         element: <TransactionHistory />,
       },
+      
     ],
   },
 

@@ -9,9 +9,9 @@ const Footer = () => {
         
         {/* Column 1: Logo */}
         <div>
-          <a href="/" className="flex items-center space-x-2">
+         
             <Logo />
-          </a>
+       
           <p className="mt-2 text-sm text-gray-600">
             Looplate – Reduce food waste, spread goodness.
           </p>

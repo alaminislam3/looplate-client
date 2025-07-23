@@ -19,10 +19,15 @@ import {
 } from "react-icons/fa";
 import Logo from "../Shared/Logo/Logo";
 import UseUserRole from "../Hooks/UseUserRole";
+import UseAuth from "../Hooks/useAuth";
+import Loading from "../Shared/Loading/Loading";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = UseUserRole();
-
+  const {loading} = UseAuth()
+  if (loading || roleLoading){
+    return <Loading></Loading>
+  }
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

@@ -4,6 +4,7 @@ import {
   FaClipboardList,
   FaCommentDots,
   FaDonate,
+  FaGift,
   FaHandHoldingHeart,
   FaHeart,
   FaHome,
@@ -24,9 +25,9 @@ import Loading from "../Shared/Loading/Loading";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = UseUserRole();
-  const {loading} = UseAuth()
-  if (loading || roleLoading){
-    return <Loading></Loading>
+  const { loading } = UseAuth();
+  if (loading || roleLoading) {
+    return <Loading></Loading>;
   }
   return (
     <div className="drawer lg:drawer-open">
@@ -159,7 +160,8 @@ const DashboardLayout = () => {
                 to="/dashboard/myprofile"
                 className="flex items-center gap-2"
               >
-                <FaUser /><p>My Profile</p>
+                <FaUser />
+                <p>My Profile</p>
               </Link>
 
               <Link
@@ -185,6 +187,44 @@ const DashboardLayout = () => {
 
               <Link
                 to="/dashboard/transactions"
+                className="flex items-center gap-2"
+              >
+                <FaMoneyCheckAlt /> <p>Transaction History</p>
+              </Link>
+            </>
+          )}
+          {!roleLoading && role === "charity" && (
+            <>
+              <Link
+                to="/dashboard/charityprofile"
+                className="flex items-center gap-2"
+              >
+                <FaUserCircle /> <p>Charity Profile</p>
+              </Link>
+
+              <Link
+                to="/dashboard/myrequests"
+                className="flex items-center gap-2"
+              >
+                <FaClipboardList /> <p>My Requests</p>
+              </Link>
+
+              <Link
+                to="/dashboard/mypickups"
+                className="flex items-center gap-2"
+              >
+                <FaHandHoldingHeart /> <p>My Pickups</p>
+              </Link>
+
+              <Link
+                to="/dashboard/receiveddonations"
+                className="flex items-center gap-2"
+              >
+                <FaGift /> <p>Received Donations</p>
+              </Link>
+
+              <Link
+                to="/dashboard/charitytransaction"
                 className="flex items-center gap-2"
               >
                 <FaMoneyCheckAlt /> <p>Transaction History</p>

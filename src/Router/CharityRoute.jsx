@@ -4,8 +4,6 @@ import UseAuth from "../Hooks/useAuth";
 import UseUserRole from "../Hooks/UseUserRole";
 import Loading from "../Shared/Loading/Loading";
 
-
-
 const CharityRoute = ({ children }) => {
   const { user, loading } = UseAuth();
   const { role, roleLoading } = UseUserRole();

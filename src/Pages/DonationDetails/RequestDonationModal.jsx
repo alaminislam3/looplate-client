@@ -11,9 +11,11 @@ const RequestDonationModal = ({ donation, user, onClose }) => {
     e.preventDefault();
 
     const requestData = {
-      donationId: donation._id,
+      email: user.email,
+      donationtitle: donation.title,
       requesterName: user.displayName,
-      requesterEmail: user.email,
+      foodtype: donation.food_type,
+      quantity: donation.quantity,
       note,
       status: "Pending",
       time: new Date(),

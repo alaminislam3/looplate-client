@@ -128,6 +128,7 @@ const DonationDetails = () => {
       {showRequestModal && (
         <RequestDonationModal
           donation={donation}
+          
           user={user}
           onClose={() => setShowRequestModal(false)}
         />

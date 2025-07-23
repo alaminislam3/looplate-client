@@ -26,6 +26,11 @@ import Favorites from "../Pages/Dashboard/User/Favorites";
 import MyReviews from "../Pages/Dashboard/User/MyReviews";
 import TransactionHistory from "../Pages/Dashboard/User/TransactionHistory";
 import DonationDetails from "../Pages/DonationDetails/DonationDetails";
+import CharityProfile from "../Pages/Dashboard/Charity/CharityProfile";
+import MyRequest from "../Pages/Dashboard/Charity/MyRequest";
+import MyPickup from "../Pages/Dashboard/Charity/MyPickup";
+import ReceivedDonations from "../Pages/Dashboard/Charity/ReceivedDonations";
+import CharityTransactionHistory from "../Pages/Dashboard/Charity/CharityTransactionHistory";
 
 export const router = createBrowserRouter([
   {
@@ -132,6 +137,28 @@ export const router = createBrowserRouter([
         path: "transactions",
         element: <TransactionHistory />,
       },
+
+      // Charity role 
+      {
+        path: "charityprofile",
+        element: <CharityProfile />,
+      },
+      {
+        path: "myrequests",
+        element: <MyRequest></MyRequest>,
+      },
+      {
+        path: "mypickups",
+        element: <MyPickup />,
+      },
+      {
+        path: "receiveddonations",
+        element: <ReceivedDonations />,
+      },
+      {
+        path: "charitytransaction",
+        element: <CharityTransactionHistory></CharityTransactionHistory>,
+      }
       
     ],
   },

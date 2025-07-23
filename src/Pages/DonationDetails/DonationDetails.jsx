@@ -79,7 +79,7 @@ const DonationDetails = () => {
       {(role === "user" || role === "charity") && (
         <button
           onClick={handleSaveToFavorites}
-          className="px-4 py-2 bg-primary text-white rounded"
+          className="px-4 py-2 bg-primary text-white rounded hover:bg-sky-400"
         >
           Save to Favorites
         </button>
@@ -89,7 +89,7 @@ const DonationDetails = () => {
         <>
           <button
             onClick={() => setShowRequestModal(true)}
-            className="px-4 py-2 bg-primary text-white rounded"
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-sky-400"
           >
             Request Donation
           </button>
@@ -97,7 +97,7 @@ const DonationDetails = () => {
           {donation.status === "Accepted" && (
             <button
               onClick={handleConfirmPickup}
-              className="px-4 py-2 bg-primary text-white rounded ml-2"
+              className="px-4 py-2 bg-primary text-white rounded ml-2 hover:bg-sky-400"
             >
               Confirm Pickup
             </button>
@@ -119,7 +119,7 @@ const DonationDetails = () => {
       {(role === "user" || role === "charity") && (
         <button
           onClick={() => setShowReviewModal(true)}
-          className="mt-4 px-4 py-2 bg-primary text-white rounded"
+          className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-sky-400"
         >
           Add Review
         </button>

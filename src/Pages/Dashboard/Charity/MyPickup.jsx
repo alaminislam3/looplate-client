@@ -1,20 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import UseAuth from "../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
 import Loading from "../../../Shared/Loading/Loading";
 
 const MyPickup = () => {
-  const { user } = UseAuth();
+  
   const axiosSecure = UseAxiosSecure();
 
   // ✅ Fetch all accepted donation requests
-  const { data: pickups = [], refetch, isLoading } = useQuery({
-    queryKey: ["my-pickups", user?.email],
+  const { data: receivedDonations = [], isLoading } = useQuery({
+    queryKey: ["receivedDonations"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/donationrequests/accepted?email=${user?.email}`);
+      const res = await axiosSecure.get("/donationrequests/pickedup");
       return res.data;
-    },
+    }
   });
 
   const handleConfirmPickup = async (id) => {
@@ -48,7 +47,7 @@ const MyPickup = () => {
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-6">📦 My Pickups</h2>
       <div className="grid md:grid-cols-2 gap-6">
-        {pickups.map((item) => (
+        {receivedDonations.map((item) => (
           <div key={item._id} className="border rounded-xl p-4 shadow bg-white">
             <h3 className="text-lg font-bold mb-1">🍽 {item.donationtitle}</h3>
             <p><strong>Restaurant:</strong> {item.requesterName}</p>

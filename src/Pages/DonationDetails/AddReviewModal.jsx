@@ -3,15 +3,17 @@ import UseAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 
-const AddReviewModal = ({ donationId, user, onClose }) => {
-  const { register, handleSubmit, reset } = useForm();
+const AddReviewModal = ({ donationId, user, onClose, donationTitle, restaurantName, }) => {
+  const { register, handleSubmit, reset,  } = useForm();
   const axiosSecure = UseAxiosSecure();
 
   const onSubmit = async (data) => {
     const review = {
       donationId,
+      donationTitle,
+      restaurantName,
       reviewerName: user.displayName || "Anonymous",
-      reviewerEmail: user.email,
+      email: user.email,
       rating: parseInt(data.rating),
       description: data.description,
       time: new Date().toISOString(),

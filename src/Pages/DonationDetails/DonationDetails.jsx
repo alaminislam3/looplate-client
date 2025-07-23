@@ -137,6 +137,8 @@ const DonationDetails = () => {
         <AddReviewModal
           donationId={id}
           user={user}
+          donationTitle={donation.title} 
+          restaurantName={donation.restaurant_name}
           onClose={() => setShowReviewModal(false)}
         />
       )}

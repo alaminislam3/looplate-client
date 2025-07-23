@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../Hooks/UseAxiosSecure";
-import UseAuth from "../../../Hooks/UseAuth";
 import Loading from "../../../Shared/Loading/Loading";
 
 const CharityTransactionHistory = () => {
@@ -18,7 +17,9 @@ const CharityTransactionHistory = () => {
     },
   });
 
-  
+  if(isLoading){
+    return <Loading></Loading>
+  }
   if (isError) return <p>Failed to load transaction history.</p>;
 
   return (

@@ -24,6 +24,7 @@ const DonationDetails = () => {
       return res.data;
     },
   });
+  console.log(donation);
 
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews", id],
@@ -55,7 +56,12 @@ const DonationDetails = () => {
 
   const handleConfirmPickup = async () => {
     await axiosSecure.patch(`/donations/${id}/pickup`);
-    alert("Marked as Picked Up");
+    Swal.fire({
+      title: "Marked as picked up!",
+      icon: "success",
+      draggable: true,
+      timer: 1300
+    });
   };
 
   if (loading || roleLoading || isLoading){

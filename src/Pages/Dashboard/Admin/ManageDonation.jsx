@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosSecure from "../../../Hooks/UseAxiosSecure";
-import { useState } from "react";
 import Loading from "../../../Shared/Loading/Loading";
+import Swal from "sweetalert2";
 
 const ManageDonation = () => {
   const axiosInstance = axiosSecure();
-  const [refresh, setRefresh] = useState(false);
+  
 
-  const { data: donations = [], isLoading } = useQuery({
-    queryKey: ["donations", refresh],
+  const { data: donations = [], isLoading, refetch } = useQuery({
+    queryKey: ["donations" ],
     queryFn: async () => {
       const res = await axiosInstance.get("/donations-with-quantity");
       return res.data;
@@ -18,12 +18,23 @@ const ManageDonation = () => {
 
   const handleVerify = async (id) => {
     await axiosInstance.patch(`/donations/status/${id}`, { status: "Verified" });
-    setRefresh(!refresh);
+    Swal.fire(
+            "Verified !",
+            "Thanks ",
+            "success",
+            
+          );
+          refetch();
   };
 
   const handleReject = async (id) => {
     await axiosInstance.patch(`/donations/status/${id}`, { status: "Rejected" });
-    setRefresh(!refresh);
+    Swal.fire(
+      "Rejected !",
+      "Thanks ",
+      "success"
+    );
+    refetch();
   };
 
   if (isLoading){

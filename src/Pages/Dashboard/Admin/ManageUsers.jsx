@@ -17,6 +17,7 @@ const ManageUsers = () => {
       return res.data;
     },
   });
+  console.log(users);
 
   // PATCH user role
   const updateRoleMutation = useMutation({
@@ -79,7 +80,7 @@ return <Loading></Loading>
           <thead>
             <tr className="bg-gray-100">
               <th>#</th>
-              <th>Name</th>
+              
               <th>Email</th>
               <th>Role</th>
               <th colSpan={4}>Actions</th>
@@ -89,7 +90,7 @@ return <Loading></Loading>
             {users.map((user, index) => (
               <tr key={user._id}>
                 <td>{index + 1}</td>
-                <td>{user.name || "N/A"}</td>
+                
                 <td>{user.email}</td>
                 <td>{user.role || "User"}</td>
                 <td>

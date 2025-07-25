@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { useContext } from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Authcontext } from "../../../Context/AuthContext";
+import axios from "axios";
 
 const Login = () => {
   const { singIn } = useContext(Authcontext);
@@ -20,10 +21,18 @@ const Login = () => {
   const onsubmit = (data) => {
     console.log(data.email, data.password);
     singIn(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
-        navigate(from);
-      })
+  .then(async (result) => {
+    const loggedUser = { email: result.user.email };
+
+    
+    const tokenRes = await axios.post("http://localhost:5000/jwt", loggedUser);
+
+    
+    localStorage.setItem("access-token", tokenRes.data.token);
+
+    // ✅ 3. Navigate
+    navigate(from);
+  })
       .catch((error) => {
         console.log(error);
 

@@ -13,10 +13,11 @@ const ReceivedDonations = () => {
   const { data: donations = [], refetch, isLoading } = useQuery({
     queryKey: ["receivedDonations"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/donationrequests/pickedup");
+      const res = await axiosSecure.get("/donationrequests/Collected");
       return res.data
     },
   });
+  console.log(donations);
    
   // ✅ Review POST handler
   const handleReviewSubmit = async () => {
@@ -57,11 +58,11 @@ const ReceivedDonations = () => {
             key={donation._id}
             className="bg-white rounded-xl shadow-md p-4 border"
           >
-            <h3 className="text-lg font-semibold">{donation.donationtitle}</h3>
-            <p><strong>Restaurant:</strong> {donation.requesterName}</p>
+            <h3 className="text-lg font-semibold">Food Name : {donation.donationtitle}</h3>
+            <p><strong>Restaurant:</strong> {donation.charityname}</p>
             <p><strong>Food Type:</strong> {donation.foodtype}</p>
             <p><strong>Quantity:</strong> {donation.quantity}</p>
-            <p><strong>Pickup Date:</strong> {donation.time || "N/A"}</p>
+            <p><strong>Pickup Date:</strong> {donation.pickup_time || "N/A"}</p>
 
             <button
               onClick={() => setSelectedDonation(donation)}

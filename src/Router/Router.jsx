@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/alldonation",
-        Component: AllDonation,
+        element: <PrivateRoute> <AllDonation></AllDonation> </PrivateRoute>,
       },
       {
         path: "/login",
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
         Component: Forbidden,
       },
       {
-        path: '/donation-details/:id' , Component: DonationDetails
+        path: '/donation-details/:id' , element: <PrivateRoute> <DonationDetails></DonationDetails> </PrivateRoute>
       }
     ],
   },

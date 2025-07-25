@@ -8,13 +8,14 @@ const MyPickup = () => {
   const axiosSecure = UseAxiosSecure();
 
   // ✅ Fetch all accepted donation requests
-  const { data: receivedDonations = [], isLoading } = useQuery({
+  const { data: receivedDonations = [], isLoading , refetch } = useQuery({
     queryKey: ["receivedDonations"],
     queryFn: async () => {
       const res = await axiosSecure.get("/donationrequests/pickedup");
       return res.data;
     }
   });
+  console.log(receivedDonations);
 
   const handleConfirmPickup = async (id) => {
     const result = await Swal.fire({
@@ -30,7 +31,7 @@ const MyPickup = () => {
         const res = await axiosSecure.patch(`/donationrequests/pickup/${id}`);
         if (res.data.modifiedCount > 0) {
           Swal.fire("Success!", "Pickup confirmed.", "success");
-          refetch();
+          refetch()
         }
         console.log(res.data);
       } catch (err) {
@@ -50,15 +51,15 @@ const MyPickup = () => {
         {receivedDonations.map((item) => (
           <div key={item._id} className="border rounded-xl p-4 shadow bg-white">
             <h3 className="text-lg font-bold mb-1">🍽 {item.donationtitle}</h3>
-            <p><strong>Restaurant:</strong> {item.requesterName}</p>
+            <p><strong>Restaurant:</strong> {item.restaurant_name}</p>
             
-            <p><strong>Food Type:</strong> {item.foodtype}</p>
+            <p><strong>Food Type:</strong> {item.food_type}</p>
             <p><strong>Quantity:</strong> {item.quantity}</p>
-            <p><strong>Pickup Time:</strong> {item.time}</p>
+            <p><strong>Pickup Time:</strong> {item.pickup_time}</p>
             <p><strong>Status:</strong> 
               <span className="text-orange-600 font-medium"> {item.status}</span>
             </p>
-            {item.status === "assigned" && (
+            {item.status === "Accepted" && (
               <button
                 onClick={() => handleConfirmPickup(item._id)}
                 className="mt-3 px-4 py-2 bg-primary hover:bg-sky-500 text-white rounded"

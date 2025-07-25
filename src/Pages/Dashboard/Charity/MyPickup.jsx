@@ -15,7 +15,7 @@ const MyPickup = () => {
       return res.data;
     }
   });
-  console.log(receivedDonations);
+  // console.log(receivedDonations);
 
   const handleConfirmPickup = async (id) => {
     const result = await Swal.fire({
@@ -33,7 +33,7 @@ const MyPickup = () => {
           Swal.fire("Success!", "Pickup confirmed.", "success");
           refetch()
         }
-        console.log(res.data);
+        // console.log(res.data);
       } catch (err) {
         Swal.fire("Error!", "Something went wrong.", "error");
       }

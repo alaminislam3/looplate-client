@@ -19,7 +19,7 @@ const Register = () => {
   const onsubmit = (data) => {
     registration(data.email, data.password)
       .then(async (result) => {
-        console.log(result.user);
+        // console.log(result.user);
   
         // ✅ Step 2: Get JWT token from server and store it
         const loggedUser = { email: result.user.email };
@@ -36,7 +36,7 @@ const Register = () => {
           last_log_in: new Date().toISOString(),
         };
         const userRes = await axiosSecure.post("/users", userInfo);
-        console.log(userRes.data);
+        // console.log(userRes.data);
   
         // ✅ update profile
         const userProfile = {
@@ -45,7 +45,7 @@ const Register = () => {
         };
         updateUserProfile(userProfile)
           .then(() => {
-            console.log("profile name and picture updated");
+            // console.log("profile name and picture updated");
           })
           .catch((error) => {
             console.log(error);

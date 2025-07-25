@@ -24,7 +24,7 @@ const DonationDetails = () => {
       return res.data;
     },
   });
-  console.log(donation);
+  // console.log(donation);
 
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews", id],

@@ -17,7 +17,7 @@ const ManageUsers = () => {
       return res.data;
     },
   });
-  console.log(users);
+  // console.log(users);
 
   // PATCH user role
   const updateRoleMutation = useMutation({

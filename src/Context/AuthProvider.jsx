@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth)
       .then(() => {
-        console.log("sing out done");
+        // console.log("sing out done");
       })
       .catch((error) => {
         console.log(error);
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,currentUser => {
       setUser(currentUser);
-      console.log(currentUser);
+      // console.log(currentUser);
       setLoading(false);
     });
     return unsubscribe;

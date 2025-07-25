@@ -19,20 +19,21 @@ const Login = () => {
   } = useForm();
 
   const onsubmit = (data) => {
-    console.log(data.email, data.password);
+    // console.log(data.email, data.password);
     singIn(data.email, data.password)
-  .then(async (result) => {
-    const loggedUser = { email: result.user.email };
+      .then(async (result) => {
+        const loggedUser = { email: result.user.email };
 
-    
-    const tokenRes = await axios.post("http://localhost:5000/jwt", loggedUser);
+        const tokenRes = await axios.post(
+          "https://looplate-server.vercel.app/jwt",
+          loggedUser
+        );
 
-    
-    localStorage.setItem("access-token", tokenRes.data.token);
+        localStorage.setItem("access-token", tokenRes.data.token);
 
-    // ✅ 3. Navigate
-    navigate(from);
-  })
+        // ✅ 3. Navigate
+        navigate(from);
+      })
       .catch((error) => {
         console.log(error);
 
@@ -120,9 +121,8 @@ const Login = () => {
               <button className="text-primary underline ml-1">Register</button>
             </Link>
           </p>
-
         </form>
-          <SocialLogin />
+        <SocialLogin />
       </div>
     </div>
   );

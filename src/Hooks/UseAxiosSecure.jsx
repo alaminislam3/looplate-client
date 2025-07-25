@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import UseAuth from "./UseAuth";
 
 const axiosSecure = axios.create({
-  baseURL: `http://localhost:5000`,
+  baseURL: `https://looplate-server.vercel.app`,
 });
 
 const UseAxiosSecure = () => {
@@ -29,7 +29,7 @@ const UseAxiosSecure = () => {
       return res;
     },
     (error) => {
-      const status = error.response?.status;  
+      const status = error.response?.status;
 
       if (status === 403) {
         navigate("/forbidden");

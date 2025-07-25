@@ -1,12 +1,66 @@
-# React + Vite
+# 🥗 Looplate - Local Food Waste Reduction Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A MERN Stack-powered platform that connects Restaurants, Charities, and Users to reduce local food waste by enabling food donations and pickups in real-time.
 
-Currently, two official plugins are available:
+🔗 **Live Site**: [https://looplate.netlify.app/](https://looplate.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠️ **Admin Credentials:**
+- **Username**: `admin@g.com`
+- **Password**: `alamin123`
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌟 Website Features
+
+✅ Below are the key highlights of the **Looplate** platform:
+
+- 🔐 **Role-based Authentication System**  
+  Users, Restaurants, Charities, and Admins have different roles with different access.
+
+- 🏪 **Restaurants Can Donate Surplus Food**  
+  Restaurants can add donation listings with food type, quantity, pickup time, and images.
+
+- 🎯 **Featured Donations Section**  
+  A homepage section displays at least 4 highlighted donations with image, status, and details.
+
+- 👥 **User Can Request Charity Role**  
+  General users can request to become a verified charity by paying a one-time fee.
+
+- 📦 **Donation Request & Tracking**  
+  Charities can request available donations and track their status (Pending, Accepted, Picked Up).
+
+- 📤 **Image Upload via ImgBB**  
+  All food images are uploaded securely to ImgBB using client-side API integration.
+
+- 📋 **Admin Dashboard with Controls**  
+  Admins can view all users, approve charity requests, and manage donations.
+
+- 🔄 **Real-time Status Update**  
+  All donation requests update their status dynamically with backend validation.
+
+- 🧠 **Secure Axios with JWT Token**  
+  Axios interceptors handle secure API calls with JWT-based verification.
+
+- 🌍 **Responsive Design with Tailwind CSS**  
+  The website is mobile-first and fully responsive for all screen sizes.
+
+---
+
+## 💻 Tech Stack
+
+- **Frontend**: React.js, React Router, Tailwind CSS, DaisyUI, React Hook Form, Axios, TanStack Query  
+- **Backend**: Express.js, Node.js, MongoDB, JWT, Dotenv  
+- **Deployment**: Netlify (Client) & Render (Server)
+
+---
+
+## 📌 Future Improvements
+
+- Push Notifications for new donations  
+- Real-time chat between charities and restaurants  
+- Google Maps API integration for accurate pickup location  
+- Monthly food donation impact reports for restaurants and charities
+
+---
+
+🎉 Thank you for visiting **Looplate** – Let's reduce food waste together!

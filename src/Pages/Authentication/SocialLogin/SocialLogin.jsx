@@ -2,18 +2,24 @@ import React, { use } from "react";
 import { useNavigate } from "react-router";
 import UseAxios from "../../../Hooks/UseAxios";
 import { Authcontext } from "../../../Context/AuthContext";
-
-
+import axios from "axios";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
   const axiosInstance = UseAxios();
-  const { singInWithGoogle } = use(Authcontext)
+  const { singInWithGoogle } = use(Authcontext);
 
   const handleGoogle = () => {
     singInWithGoogle()
       .then(async (result) => {
         const user = result.user;
+        const loggedUser = { email: result.user.email };
+        const tokenRes = await axios.post(
+          "https://looplate-server.vercel.app/jwt",
+          loggedUser
+        );
+        localStorage.setItem("access-token", tokenRes.data.token);
+
         const userInfo = {
           email: user.email,
           role: "user" /* default  */,
@@ -24,7 +30,7 @@ const SocialLogin = () => {
         // console.log("user update info", userRes.data);
 
         // console.log(result);
-        
+
         navigate("/");
       })
       .cathch((error) => {

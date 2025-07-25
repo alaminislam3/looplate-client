@@ -14,8 +14,8 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    setError, // ✅ এটা যোগ করলাম manual error দেখানোর জন্য
-    formState: { errors }, // ✅ form-এর error গুলো ধরে রাখতে
+    setError, 
+    formState: { errors }, 
   } = useForm();
 
   const onsubmit = (data) => {

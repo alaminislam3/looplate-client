@@ -15,7 +15,7 @@ const MyPickup = () => {
       return res.data;
     }
   });
-  // console.log(receivedDonations);
+  console.log(receivedDonations);
 
   const handleConfirmPickup = async (id) => {
     const result = await Swal.fire({
@@ -53,9 +53,9 @@ const MyPickup = () => {
             <h3 className="text-lg font-bold mb-1">🍽 {item.donationtitle}</h3>
             <p><strong>Restaurant:</strong> {item.restaurant_name}</p>
             
-            <p><strong>Food Type:</strong> {item.food_type}</p>
+            <p><strong>Food Type:</strong> {item.foodtype}</p>
             <p><strong>Quantity:</strong> {item.quantity}</p>
-            <p><strong>Pickup Time:</strong> {item.pickup_time}</p>
+            <p><strong>Pickup Time:</strong> {item.pickupTime}</p>
             <p><strong>Status:</strong> 
               <span className="text-orange-600 font-medium"> {item.status}</span>
             </p>

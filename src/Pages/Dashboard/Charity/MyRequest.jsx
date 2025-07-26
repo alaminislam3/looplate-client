@@ -16,6 +16,7 @@ const MyRequest = () => {
       return res.data;
     },
   });
+  console.log(requests);
   
 
   const handleCancel = async (id) => {

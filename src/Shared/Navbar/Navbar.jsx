@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../Logo/Logo";
 import { Authcontext } from "../../Context/AuthContext";
-import Loading from "../Loading/Loading";
+
 
 const Navbar = () => {
   const { user, logout  } = use(Authcontext);
@@ -45,6 +45,16 @@ const Navbar = () => {
       >
         Dashboard
       </NavLink>
+      <NavLink
+        to="/aboutus"
+        className={({ isActive }) =>
+          isActive
+            ? "text-sky-600 underline font-semibold"
+            : "text-gray-600 hover:text-sky-600 font-semibold"
+        }
+      >
+        About us 
+      </NavLink>
     </>
   );
   return (
@@ -75,7 +85,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Logo></Logo>
+       <div className="hidden md:block">
+       <Logo></Logo>
+       </div>
       </div>
       <div className="navbar-center   hidden lg:flex lg:justify-evenly">
         <ul className="menu gap-2 menu-horizontal px-1">{links}</ul>

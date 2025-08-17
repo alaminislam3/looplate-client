@@ -2,21 +2,21 @@ const OurTestimonial = () => {
     const testimonials = [
       {
         id: 1,
-        img: "../../../../public/res1.webp",
+        img: "./public/res1.webp",
         title: "Food For All",
         desc: "Helping people with daily meals to fight hunger.",
         site: "https://www.foodforall.org",
       },
       {
         id: 2,
-        img: "../../../../public/res2.webp",
+        img: "./public/res2.webp",
         title: "Cloth Share",
         desc: "Providing warm clothes to the needy during winter.",
         site: "https://www.clothshare.org",
       },
       {
         id: 3,
-        img: "../../../../public/res3.jpg",
+        img: "./public/res3.jpg",
         title: "Hope Foundation",
         desc: "Supporting children with education and shelter.",
         site: "https://www.hopefoundation.org",
@@ -36,11 +36,13 @@ const OurTestimonial = () => {
           </div>
   
           <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((item) => (
+            {testimonials.map((item) => (  
+              
               <div
                 key={item.id}
                 className="p-10 flex items-center gap-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition duration-300"
               >
+                
                 <img
                   src={item.img}
                   alt={item.title}
@@ -48,7 +50,7 @@ const OurTestimonial = () => {
                 />
                 <div>
                   <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-600">{item.desc} </p>
                   <a
                     href={item.site}
                     target="_blank"

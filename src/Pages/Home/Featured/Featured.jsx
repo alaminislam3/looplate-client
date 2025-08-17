@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import Loading from '../../../Shared/Loading/Loading';
-
+import { motion } from 'framer-motion';
 
 const Featured = () => {
   const axiosSecure = UseAxiosSecure();
@@ -15,45 +15,76 @@ const Featured = () => {
     },
   });
 
-  if (isLoading) return <Loading></Loading>;
-  if (isError) return <p className="text-center text-red-500 py-10">Something went wrong!</p>;
+  if (isLoading) return <Loading />;
+  if (isError)
+    return (
+      <p className="text-center text-red-500 py-10">Something went wrong!</p>
+    );
 
   return (
-    <section className="px-4 md:px-8 lg:px-16 md:py-20 py-10">
-      <h2 className="text-2xl md:text-3xl font-bold mb-10  text-center text-primary">Pick from Today’s Specials</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {donations.map((donation) => (
-          <div
+    <section className="px-4 md:px-8 lg:px-16 md:py-20 py-10 bg-gray-50">
+      {/* Title */}
+      <div className="text-center mb-12">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-3">
+          Pick from Today’s Specials
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Discover freshly available donations from our partnered restaurants
+          and help reduce food waste while making a difference!
+        </p>
+      </div>
+
+      {/* Grid Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {donations.map((donation, index) => (
+          <motion.div
             key={donation._id}
-            className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-2 transform transition duration-300"
           >
-            <img
-              src={donation.image}
-              alt={donation.title}
-              className="h-48 w-full object-cover"
-            />
-            <div className="p-4  flex-1 flex flex-col">
-              <h3 className="text-xl font-semibold mb-2">{donation.food_type}</h3>
+            {/* Image with hover zoom */}
+            <div className="overflow-hidden relative">
+              <img
+                src={donation.image}
+                alt={donation.title}
+                className="h-48 w-full object-cover transform hover:scale-110 transition duration-500"
+              />
+              {/* Overlay badge */}
+              <span
+                className={`absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full ${
+                  donation.status === 'Available'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-red-500 text-white'
+                }`}
+              >
+                {donation.status}
+              </span>
+            </div>
+
+            {/* Card Content */}
+            <div className="p-5 flex-1 flex flex-col">
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                {donation.food_type}
+              </h3>
               <p className="text-gray-600 mb-1">
-                <span className="font-semibold">Restaurant:</span> {donation.restaurant_name}
+                <span className="font-semibold">Restaurant:</span>{' '}
+                {donation.restaurant_name}
               </p>
-              <p className="text-gray-600 mb-1">
-                <span className="font-semibold">Location:</span> {donation.location}
+              <p className="text-gray-600 mb-3">
+                <span className="font-semibold">Location:</span>{' '}
+                {donation.location}
               </p>
-              <p className="mt-auto mb-3">
-                <span className="inline-block text-sm font-medium px-2 py-1 rounded-full 
-                  bg-green-100 text-green-700">
-                  {donation.status}
-                </span>
-              </p>
+
               <Link
                 to={`/donation/${donation._id}`}
-                className="mt-auto inline-block text-center bg-primary text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="mt-auto inline-block text-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
               >
                 View Details
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

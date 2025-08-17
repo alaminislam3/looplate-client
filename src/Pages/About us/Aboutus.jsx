@@ -6,7 +6,7 @@ const AboutUs = () => {
       {/* Top - Image */}
       <div className="w-full flex justify-center mb-8">
         <img
-          src="./about us.jpg" // এখানে আপনার ইমেজ লিংক দিন
+          src="./about us.jpg" 
           alt="Food Waste Awareness"
           className="w-full max-w-3xl h-auto rounded-2xl shadow-lg object-cover
 "
@@ -14,7 +14,7 @@ const AboutUs = () => {
       </div>
 
       {/* Bottom - Text */}
-      <div className="text-center border-amber-50 shadow">
+      <div className="text-center border-amber-50 shadow p-10 rounded-2xl">
         <h1 className="text-3xl lg:text-4xl font-bold text-primary mb-4">
           About Our Mission
         </h1>

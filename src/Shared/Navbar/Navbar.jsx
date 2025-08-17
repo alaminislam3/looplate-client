@@ -55,6 +55,16 @@ const Navbar = () => {
       >
         About us 
       </NavLink>
+      <NavLink
+        to="/donate"
+        className={({ isActive }) =>
+          isActive
+            ? "text-sky-600 underline font-semibold"
+            : "text-gray-600 hover:text-sky-600 font-semibold"
+        }
+      >
+        Donation
+      </NavLink>
     </>
   );
   return (

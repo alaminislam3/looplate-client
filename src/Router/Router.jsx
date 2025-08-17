@@ -32,6 +32,7 @@ import MyPickup from "../Pages/Dashboard/Charity/MyPickup";
 import ReceivedDonations from "../Pages/Dashboard/Charity/ReceivedDonations";
 import CharityTransactionHistory from "../Pages/Dashboard/Charity/CharityTransactionHistory";
 import AboutUs from "../Pages/About us/Aboutus";
+import Donate from "../Pages/Donate us/Donate";
 
 export const router = createBrowserRouter([
   {
@@ -62,8 +63,11 @@ export const router = createBrowserRouter([
         path: '/donation-details/:id' , element: <PrivateRoute> <DonationDetails></DonationDetails> </PrivateRoute>
       },
       {
-        path: 'aboutus' , Component: AboutUs
-      }
+        path: '/aboutus' , Component: AboutUs
+      },
+      {
+        path: '/donate' , Component: Donate
+      },
     ],
   },
   {

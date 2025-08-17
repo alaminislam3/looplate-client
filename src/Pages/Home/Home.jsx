@@ -7,6 +7,7 @@ import ImpactOverview from './ImpactOverview/ImpactOverview';
 import OurMission from './Our Mission/OurMission';
 import OurTestimonial from './Testimonial/OurTestimonial';
 import Subscription from './Subscription/Subscription';
+import HowWeWork from './HowWeWork/HowWeWork';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
            <OurMission></OurMission>
            <TopContributors></TopContributors>
            <OurTestimonial></OurTestimonial>
+           <HowWeWork></HowWeWork>
            <Subscription></Subscription>
            <ImpactOverview></ImpactOverview>
         </div>

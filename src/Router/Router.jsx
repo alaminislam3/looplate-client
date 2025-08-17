@@ -34,6 +34,7 @@ import CharityTransactionHistory from "../Pages/Dashboard/Charity/CharityTransac
 import AboutUs from "../Pages/About us/Aboutus";
 import Donate from "../Pages/Donate us/Donate";
 import DashboardOverview from "../Pages/Dashboard/User/DashboardOverview";
+import AdminDashboardOverview from "../Pages/Dashboard/Admin/AdminDashboardOverview";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +123,9 @@ export const router = createBrowserRouter([
       {
         path: "adminprofile",
         element: <AdminProfile />,
+      },
+      {
+path: 'adminoverview', Component: AdminDashboardOverview
       },
       {
         path: "managedonations",

@@ -117,6 +117,13 @@ const DashboardLayout = () => {
               >
                 <FaUserShield /> <p>Admin Profile</p>
               </Link>
+              <Link
+                to="/dashboard/adminoverview"
+                className="flex items-center gap-2"
+              >
+                <FaChartPie  />
+                <p>Overview</p>
+              </Link>
 
               <Link
                 to="/dashboard/managedonations"

@@ -16,7 +16,7 @@ const UserProfile = () => {
       <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
         {/* User Image */}
         <img
-          src={user?.photoURL || "https://i.ibb.co/84t49VFN/images.jpg"}
+          src={user?.photoURL || "https://i.ibb.co.com/4npGdSLZ/diz-sml-001.png"}
           alt="User"
           className="w-32 h-32 rounded-full border-4 border-sky-400 shadow-lg object-cover"
         />

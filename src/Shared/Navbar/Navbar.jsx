@@ -68,7 +68,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className=" sticky top-0 z-50  navbar bg-gray-200 text-gray-800 px-6 py-4 shadow-sm">
+    <div className=" sticky top-0 z-50 navbar bg-gray-200 text-gray-800 px-6 py-2.5 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           {<div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -99,7 +99,7 @@ const Navbar = () => {
        <Logo></Logo>
        </div>
       </div>
-      <div className="navbar-center   hidden lg:flex lg:justify-evenly">
+      <div className="navbar-center   hidden lg:flex lg:justify-evenly ">
         <ul className="menu gap-2 menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">

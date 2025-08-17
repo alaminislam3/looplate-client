@@ -3,7 +3,8 @@ import Banner from './Banner/Banner';
 import Featured from './Featured/Featured';
 import TopContributors from './TopContributors/TopContributors';
 import ImpactOverview from './ImpactOverview/ImpactOverview';
-import LatestCharityRequests from './LatestCharityRequests/LatestCharityRequests';
+
+import OurMission from './Our Mission/OurMission';
 
 const Home = () => {
     return (
@@ -11,7 +12,8 @@ const Home = () => {
            <Banner></Banner>
            <Featured></Featured>
            <TopContributors></TopContributors>
-           <LatestCharityRequests></LatestCharityRequests>
+           <OurMission></OurMission>
+           
            <ImpactOverview></ImpactOverview>
         </div>
     );

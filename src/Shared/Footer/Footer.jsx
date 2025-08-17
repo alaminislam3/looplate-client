@@ -1,18 +1,21 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import Logo from "../Logo/Logo"; 
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import Logo from "../Logo/Logo";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-200 text-gray-800 px-6 py-4 md:p-12">
       <div className=" mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        
         {/* Column 1: Logo */}
         <div>
-         
-            <Logo />
-       
+          <Logo />
+
           <p className="mt-2 text-sm text-gray-600">
             Looplate – Reduce food waste, spread goodness.
           </p>
@@ -22,8 +25,11 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-3 text-gray-900">About</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to={'/aboutus'} className="hover:text-blue-600">Our Mission</Link></li>
-            
+            <li>
+              <Link to={"/aboutus"} className="hover:text-blue-600">
+                Our Mission
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -31,23 +37,73 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-3 text-gray-900">Contact</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-blue-600">Email Support</a></li>
-            <li><a href="#" className="hover:text-blue-600">Facebook Page</a></li>
-            <li><a href="#" className="hover:text-blue-600">Help Center</a></li>
+            <li>
+              <a
+                href="mailto:alamin.islam.dev2@gmail.com"
+                className="hover:text-blue-600"
+              >
+                Email Support
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600"
+              >
+                Facebook Page
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com"  target="_blank" className="hover:text-blue-600">
+                Help Center
+              </a>
+            </li>
           </ul>
         </div>
 
         {/* Column 4: Social Media */}
+        {/* Column 4: Social Media */}
         <div>
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">Follow Us</h3>
+          <h3 className="text-lg font-semibold mb-3 text-gray-900">
+            Follow Us
+          </h3>
           <div className="flex space-x-4 text-xl text-gray-600">
-            <a href="#" className="hover:text-blue-600"><FaFacebookF /></a>
-            <a href="#" className="hover:text-sky-500"><FaTwitter /></a>
-            <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-800"><FaLinkedinIn /></a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-sky-500"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-pink-500"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-800"
+            >
+              <FaLinkedinIn />
+            </a>
           </div>
         </div>
-
       </div>
 
       {/* Bottom Section */}

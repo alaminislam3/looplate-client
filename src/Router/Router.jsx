@@ -33,6 +33,7 @@ import ReceivedDonations from "../Pages/Dashboard/Charity/ReceivedDonations";
 import CharityTransactionHistory from "../Pages/Dashboard/Charity/CharityTransactionHistory";
 import AboutUs from "../Pages/About us/Aboutus";
 import Donate from "../Pages/Donate us/Donate";
+import DashboardOverview from "../Pages/Dashboard/User/DashboardOverview";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +46,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/alldonation",
-        element: <PrivateRoute> <AllDonation></AllDonation> </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AllDonation></AllDonation>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -60,28 +66,41 @@ export const router = createBrowserRouter([
         Component: Forbidden,
       },
       {
-        path: '/donation-details/:id' , element: <PrivateRoute> <DonationDetails></DonationDetails> </PrivateRoute>
+        path: "/donation-details/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <DonationDetails></DonationDetails>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/aboutus' , Component: AboutUs
+        path: "/aboutus",
+        Component: AboutUs,
       },
       {
-        path: '/donate' , Component: Donate
+        path: "/donate",
+        Component: Donate,
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute>  <DashboardLayout></DashboardLayout>  </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout></DashboardLayout>{" "}
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
-        Component: DashboardHome
-        
+        Component: DashboardHome,
       },
       // Restaurant
-       {
-        path: '/dashboard/restaurantprofile' , Component: RestaurantProfile
+      {
+        path: "/dashboard/restaurantprofile",
+        Component: RestaurantProfile,
       },
       {
         path: "/dashboard/adddonation",
@@ -124,10 +143,14 @@ export const router = createBrowserRouter([
         path: "featureddonations",
         element: <FeatureDonations />,
       },
-      // user role 
+      // user role
       {
         path: "myprofile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "overview",
+        Component: DashboardOverview,
       },
       {
         path: "requestcharity",
@@ -146,7 +169,7 @@ export const router = createBrowserRouter([
         element: <TransactionHistory />,
       },
 
-      // Charity role 
+      // Charity role
       {
         path: "charityprofile",
         element: <CharityProfile />,
@@ -166,8 +189,7 @@ export const router = createBrowserRouter([
       {
         path: "charitytransaction",
         element: <CharityTransactionHistory></CharityTransactionHistory>,
-      }
-      
+      },
     ],
   },
 

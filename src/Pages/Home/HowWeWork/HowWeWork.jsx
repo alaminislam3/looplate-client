@@ -70,14 +70,14 @@ const HowWeWork = () => {
       <motion.img
           src="/male hand.png"
           alt="Hand"
-          className="w-40 opacity-70"
+          className="w-20 md:w-40 opacity-70"
           animate={{ x: [-20, 0, -20] }}
           transition={{ repeat: Infinity, duration: 4 }}
         />
         <motion.img
           src="/female hand.png"
           alt="Hand"
-          className="w-40 opacity-70"
+          className="w-20 md:w-40 opacity-70"
           animate={{ x: [-25, 0, -25] }}
           transition={{ repeat: Infinity, duration: 5 }}
         />

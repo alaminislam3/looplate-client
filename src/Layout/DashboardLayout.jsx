@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router";
 import {
+  FaChartPie,
   FaClipboardList,
   FaCommentDots,
   FaDonate,
@@ -162,6 +163,13 @@ const DashboardLayout = () => {
               >
                 <FaUser />
                 <p>My Profile</p>
+              </Link>
+              <Link
+                to="/dashboard/overview"
+                className="flex items-center gap-2"
+              >
+                <FaChartPie />
+                <p>Overview</p>
               </Link>
 
               <Link

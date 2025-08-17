@@ -25,19 +25,24 @@ const AllDonations = () => {
 
   return (
     <div className="p-4 px-4 md:px-8 lg:px-16 md:py-20 py-10">
+      {/* Title */}
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-primary mb-8 md:mb-10">
         Verified Donations
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+      {/* Grid Container */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center">
         {donations.map((donation, index) => (
           <motion.div
             key={donation._id}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.15)" }}
-            className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col text-sm md:text-base lg:text-sm"
+            whileHover={{
+              scale: 1.02,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+            }}
+            className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col text-sm md:text-base lg:text-sm w-full max-w-xs"
           >
             {/* Image */}
             <div className="overflow-hidden">
@@ -81,6 +86,7 @@ const AllDonations = () => {
                 </span>
               </div>
 
+              {/* Details Button */}
               <Link
                 to={`/donation-details/${donation._id}`}
                 className="mt-3 md:mt-4 inline-block text-center bg-primary text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold hover:bg-blue-600 transition text-xs md:text-sm"

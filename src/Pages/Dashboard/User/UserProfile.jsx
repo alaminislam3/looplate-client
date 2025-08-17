@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router"; // Link import
 import UseAuth from "../../../Hooks/UseAuth";
 import Loading from "../../../Shared/Loading/Loading";
 
@@ -23,15 +24,15 @@ const UserProfile = () => {
 
         {/* User Info */}
         <div className="flex-1 space-y-2 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-gray-800"> Name :
-            {user?.displayName || "User Name"}
+          <h2 className="text-3xl font-bold text-gray-800">
+            Name: {user?.displayName || "User Name"}
           </h2>
-          <p className="text-gray-600 font-medium"> Email : {user?.email || "No Email"}</p>
+          <p className="text-gray-600 font-medium">Email: {user?.email || "No Email"}</p>
           <p className="text-gray-600 font-medium">
-          Phone :  {user?.phoneNumber || "No Phone Number"}
+            Phone: {user?.phoneNumber || "No Phone Number"}
           </p>
           <p className="text-gray-600 font-medium">
-           Address : {user?.address || "No Address Provided"}
+            Address: {user?.address || "No Address Provided"}
           </p>
           <p className="text-gray-500 text-sm">
             Joined on:{" "}
@@ -60,6 +61,16 @@ const UserProfile = () => {
           <span className="font-semibold text-sky-500">Points</span>
           <p className="text-gray-700">230</p>
         </div>
+      </div>
+
+      {/* See Full Overview Button */}
+      <div className="mt-8 text-center">
+        <Link
+          to="/dashboard/overview"
+          className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+        >
+          See Full Overview
+        </Link>
       </div>
     </div>
   );

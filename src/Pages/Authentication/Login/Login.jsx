@@ -14,9 +14,15 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    setError, 
-    formState: { errors }, 
-  } = useForm();
+    setError,
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
+      email: "user@g.com",
+      password: "alamin123",
+    },
+  });
 
   const onsubmit = (data) => {
     // console.log(data.email, data.password);
@@ -70,7 +76,7 @@ const Login = () => {
               type="email"
               {...register("email")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Email"
+              placeholder="admin@g.com"
             />
             {/* ✅ যদি email ভুল হয় */}
             {errors.email && (
@@ -98,7 +104,7 @@ const Login = () => {
                 },
               })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              placeholder="Password"
+              placeholder="alamin123"
             />
           </div>
 
@@ -122,6 +128,8 @@ const Login = () => {
             </Link>
           </p>
         </form>
+        <div className="flex justify-between mt-4"></div>
+
         <SocialLogin />
       </div>
     </div>

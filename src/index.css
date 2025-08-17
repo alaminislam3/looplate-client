@@ -6,11 +6,12 @@
    
    }
   
-  
-  @plugin "daisyui/theme" {
-    name: "light";
-  default: true;
-  --color-primary: skyblue;
-  --color-secondary: teal;
+   @plugin "daisyui/theme" {
+    name: "dark";
+    default: true;
+    --color-primary: #14B8A6;
+    --color-secondary: ;
   }
+
+  @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *))
   

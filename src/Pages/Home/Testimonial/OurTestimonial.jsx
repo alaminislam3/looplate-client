@@ -2,21 +2,21 @@ const OurTestimonial = () => {
     const testimonials = [
       {
         id: 1,
-        img: "./public/res1.webp",
+        img: "/res1.webp",
         title: "Food For All",
         desc: "Helping people with daily meals to fight hunger.",
         site: "https://www.foodforall.org",
       },
       {
         id: 2,
-        img: "./public/res2.webp",
+        img: "/res2.webp",
         title: "Cloth Share",
         desc: "Providing warm clothes to the needy during winter.",
         site: "https://www.clothshare.org",
       },
       {
         id: 3,
-        img: "./public/res3.jpg",
+        img: "/res3.jpg",
         title: "Hope Foundation",
         desc: "Supporting children with education and shelter.",
         site: "https://www.hopefoundation.org",

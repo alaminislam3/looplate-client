@@ -47,12 +47,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/alldonation",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <AllDonation></AllDonation>{" "}
-          </PrivateRoute>
-        ),
+        element: <AllDonation></AllDonation>,
       },
       {
         path: "/login",
@@ -125,7 +120,8 @@ export const router = createBrowserRouter([
         element: <AdminProfile />,
       },
       {
-path: 'adminoverview', Component: AdminDashboardOverview
+        path: "adminoverview",
+        Component: AdminDashboardOverview,
       },
       {
         path: "managedonations",

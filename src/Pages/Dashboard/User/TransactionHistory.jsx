@@ -23,13 +23,13 @@ const TransactionHistory = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 ">
       <h2 className="text-2xl font-bold mb-4">Transaction History</h2>
 
       {transactions.length === 0 ? (
         <p className="text-gray-500">No transactions found.</p>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto ">
           <table className="table table-zebra w-full">
             <thead>
               <tr className="bg-gray-200">

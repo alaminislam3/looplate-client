@@ -36,13 +36,13 @@ const ManageRequests = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 ">
       <h2 className="text-2xl font-semibold mb-4">Manage Donation Requests</h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>
-            <tr className="bg-gray-200 text-gray-700">
+            <tr className="bg-gray-200 dark:bg-black text-gray-700 dark:text-white">
               <th>#</th>
               <th>Donation Title</th>
               <th>Charity Name</th>

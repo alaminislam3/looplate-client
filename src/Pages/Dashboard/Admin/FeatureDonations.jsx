@@ -56,7 +56,7 @@ const FeatureDonations = () => {
       <h2 className="text-2xl font-bold mb-6">Feature Donations</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 dark:bg-black">
             <tr>
               <th>Image</th>
               <th>Title</th>

@@ -15,10 +15,10 @@ const RequestCharityRole = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className=" mx-auto p-6 bg-white shadow-2xl rounded-2xl mt-10"
+      className="mx-auto p-6 bg-[#f1f3fa] dark:bg-[#0c0e18] shadow-2xl rounded-2xl mt-10 transition-colors"
     >
       {/* Title */}
-      <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+      <h2 className="text-3xl font-bold text-[#0c0e18] dark:text-[#f1f3fa] mb-6 text-center">
         Request Charity Role
       </h2>
 
@@ -26,31 +26,31 @@ const RequestCharityRole = () => {
       <div className="space-y-5 px-10">
         {/* User Name */}
         <div className="flex items-center gap-3">
-          <FaUser className="text-sky-500 text-xl" />
+          <FaUser className="text-[#435cd1] text-xl" />
           <input
             value={user?.displayName}
             readOnly
-            className="input input-bordered w-full text-gray-700 font-medium"
+            className="input input-bordered w-full text-[#0c0e18] dark:text-[#f1f3fa] bg-white dark:bg-[#1a1c28]"
           />
         </div>
 
         {/* User Email */}
         <div className="flex items-center gap-3">
-          <FaEnvelope className="text-sky-500 text-xl" />
+          <FaEnvelope className="text-[#435cd1] text-xl" />
           <input
             value={user?.email}
             readOnly
-            className="input input-bordered w-full text-gray-700 font-medium"
+            className="input input-bordered w-full text-[#0c0e18] dark:text-[#f1f3fa] bg-white dark:bg-[#1a1c28]"
           />
         </div>
 
         {/* Organization Name */}
         <div className="flex items-center gap-3">
-          <FaBuilding className="text-sky-500 text-xl" />
+          <FaBuilding className="text-[#435cd1] text-xl" />
           <input
             type="text"
             placeholder="Enter Organization Name"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full text-[#0c0e18] dark:text-[#f1f3fa] bg-white dark:bg-[#1a1c28]"
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
             required
@@ -59,10 +59,10 @@ const RequestCharityRole = () => {
 
         {/* Mission Statement */}
         <div className="flex items-start gap-3">
-          <FaFlag className="text-sky-500 text-xl mt-2" />
+          <FaFlag className="text-[#435cd1] text-xl mt-2" />
           <textarea
             placeholder="Write your mission statement..."
-            className="textarea textarea-bordered w-full"
+            className="textarea textarea-bordered w-full text-[#0c0e18] dark:text-[#f1f3fa] bg-white dark:bg-[#1a1c28]"
             rows="5"
             value={mission}
             onChange={(e) => setMission(e.target.value)}

@@ -35,29 +35,41 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="px-4 py-6">
-      <h2 className="text-2xl font-semibold mb-4">My Reviews</h2>
+    <div className="px-4 py-6 bg-[#f1f3fa] dark:bg-[#0c0e18] min-h-screen transition-colors">
+      <h2 className="text-2xl font-semibold mb-4 text-[#0c0e18] dark:text-[#f1f3fa]">
+        My Reviews
+      </h2>
       <div className="grid gap-4">
         {reviews.map((review) => (
           <div
             key={review._id}
-            className="p-4 border rounded-lg shadow-md bg-white space-y-1"
+            className="p-4 border rounded-lg shadow-md bg-white dark:bg-[#1a1c28] transition-colors space-y-1"
           >
-            <h3 className="text-lg font-bold">{review.donationTitle}</h3>
-            <p className="text-sm text-gray-600">Restaurant: {review.restaurantName}</p>
-            <p className="text-sm text-gray-500">
+            <h3 className="text-lg font-bold text-[#0c0e18] dark:text-[#f1f3fa]">
+              {review.donationTitle}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              Restaurant: {review.restaurantName}
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Time: {new Date(review.reviewTime).toLocaleString()}
             </p>
-            <p className="mt-1">{review.description}</p>
+            <p className="mt-1 text-[#0c0e18] dark:text-[#f1f3fa]">
+              {review.description}
+            </p>
             <button
               onClick={() => handleDelete(review._id)}
-              className="mt-2 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              className="mt-2 px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded transition-colors"
             >
               Delete
             </button>
           </div>
         ))}
-        {reviews.length === 0 && <p>You haven’t submitted any reviews yet.</p>}
+        {reviews.length === 0 && (
+          <p className="text-[#0c0e18] dark:text-[#f1f3fa]">
+            You haven’t submitted any reviews yet.
+          </p>
+        )}
       </div>
     </div>
   );

@@ -43,51 +43,50 @@ const adminData = {
 
 const AdminDashboardOverview = () => {
   return (
-    <div className="max-w-7xl mx-auto mt-10 p-6">
+    <div className="max-w-7xl mx-auto mt-10 p-6 bg-[#f1f3fa] dark:bg-[#0c0e18] transition-colors min-h-screen">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-        <div className="p-6 bg-white rounded-xl shadow text-center">
-          <h3 className="text-gray-500 font-semibold">Users</h3>
-          <p className="text-2xl font-bold text-gray-800">{adminData.totalUsers}</p>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow text-center">
-          <h3 className="text-gray-500 font-semibold">Donations</h3>
-          <p className="text-2xl font-bold text-gray-800">{adminData.totalDonations}</p>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow text-center">
-          <h3 className="text-gray-500 font-semibold">Requests</h3>
-          <p className="text-2xl font-bold text-gray-800">{adminData.totalRequests}</p>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow text-center">
-          <h3 className="text-gray-500 font-semibold">Charities</h3>
-          <p className="text-2xl font-bold text-gray-800">{adminData.totalCharities}</p>
-        </div>
+        {[
+          { title: "Users", value: adminData.totalUsers },
+          { title: "Donations", value: adminData.totalDonations },
+          { title: "Requests", value: adminData.totalRequests },
+          { title: "Charities", value: adminData.totalCharities },
+        ].map((card, i) => (
+          <div
+            key={i}
+            className="p-6 rounded-xl shadow text-center bg-white dark:bg-[#1a1c2a] transition-colors"
+          >
+            <h3 className="text-gray-500 dark:text-gray-300 font-semibold">{card.title}</h3>
+            <p className="text-2xl font-bold text-gray-800 dark:text-[#f1f3fa]">{card.value}</p>
+          </div>
+        ))}
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Weekly Donations Line Chart */}
-        <div className="p-6 bg-white rounded-xl shadow">
-          <h3 className="text-gray-800 font-bold mb-4">Weekly Donations</h3>
+        <div className="p-6 bg-white rounded-xl shadow dark:bg-[#1a1c2a] transition-colors">
+          <h3 className="text-gray-800 dark:text-[#f1f3fa] font-bold mb-4">Weekly Donations</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={adminData.weeklyDonations}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis />
-              <Tooltip />
+              <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
+              <XAxis dataKey="day" stroke="#0c0e18" darkColor="#f1f3fa" />
+              <YAxis stroke="#0c0e18" />
+              <Tooltip contentStyle={{ backgroundColor: "#fff", color: "#000" }} />
               <Line
                 type="monotone"
                 dataKey="donations"
                 stroke="#00C49F"
                 strokeWidth={2}
+                activeDot={{ r: 8 }}
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
         {/* Request Status Pie Chart */}
-        <div className="p-6 bg-white rounded-xl shadow">
-          <h3 className="text-gray-800 font-bold mb-4">Request Status</h3>
+        <div className="p-6 bg-white rounded-xl shadow dark:bg-[#1a1c2a] transition-colors">
+          <h3 className="text-gray-800 dark:text-[#f1f3fa] font-bold mb-4">Request Status</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -97,7 +96,6 @@ const AdminDashboardOverview = () => {
                 cx="50%"
                 cy="50%"
                 outerRadius={80}
-                fill="#8884d8"
                 label
               >
                 {adminData.requestStatus.map((entry, index) => (
@@ -105,15 +103,15 @@ const AdminDashboardOverview = () => {
                 ))}
               </Pie>
               <Tooltip />
-              <Legend />
+              <Legend wrapperStyle={{ color: "#0c0e18" }} />
             </PieChart>
           </ResponsiveContainer>
         </div>
       </div>
 
       {/* Feature Donations Pie Chart */}
-      <div className="mt-6 p-6 bg-white rounded-xl shadow">
-        <h3 className="text-gray-800 font-bold mb-4">Featured Donations</h3>
+      <div className="mt-6 p-6 bg-white rounded-xl shadow dark:bg-[#1a1c2a] transition-colors">
+        <h3 className="text-gray-800 dark:text-[#f1f3fa] font-bold mb-4">Featured Donations</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -130,7 +128,7 @@ const AdminDashboardOverview = () => {
               ))}
             </Pie>
             <Tooltip />
-            <Legend />
+            <Legend wrapperStyle={{ color: "#0c0e18" }} />
           </PieChart>
         </ResponsiveContainer>
       </div>

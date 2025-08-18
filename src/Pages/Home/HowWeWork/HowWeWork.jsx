@@ -30,11 +30,11 @@ const steps = [
 
 const HowWeWork = () => {
   return (
-    <section className="relative px-4 md:px-8 lg:px-16 md:py-20 py-10 overflow-hidden">
+    <section className="relative px-4 md:px-8 lg:px-16 md:py-20 py-10 overflow-hidden bg-[#f1f3fa] dark:bg-[#0c0e18]">
       {/* Heading */}
       <div className="text-center mb-12">
-        <p className="text-sky-500 italic font-medium">Work Process</p>
-        <h2 className="text-3xl md:text-4xl font-bold">
+        <p className="text-[#435cd1] dark:text-[#8c9eee] text-5xl">Work Process</p>
+        <h2 className="text-3xl md:text-4xl text-[#0c0e18]/80 dark:text-gray-300">
           How We Proceed with Donations
         </h2>
       </div>

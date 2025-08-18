@@ -18,20 +18,25 @@ const AllDonations = () => {
   if (isLoading) return <Loading />;
   if (isError)
     return (
-      <p className="text-center py-10 text-red-500">
+      <p className="text-center py-10 text-red-500 dark:text-red-400">
         Failed to load donations.
       </p>
     );
 
   return (
-    <div className="p-4 px-4 md:px-8 lg:px-16 md:py-20 py-10">
+    <div className="p-4 px-4 md:px-8 lg:px-16 md:py-20 py-10 
+      bg-gray-50 dark:bg-[#0f152c] min-h-screen transition-colors duration-300">
+      
       {/* Title */}
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-primary mb-8 md:mb-10">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center 
+        text-sky-500 dark:text-[#8c9eee] mb-8 md:mb-10">
         Verified Donations
       </h1>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
+        gap-6 md:gap-8 justify-items-center">
+        
         {donations.map((donation, index) => (
           <motion.div
             key={donation._id}
@@ -42,44 +47,49 @@ const AllDonations = () => {
               scale: 1.02,
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
             }}
-            className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col text-sm md:text-base lg:text-sm w-full max-w-xs"
+            className="bg-white dark:bg-[#1a1f3c] 
+              rounded-xl shadow-md overflow-hidden 
+              flex flex-col text-sm md:text-base lg:text-sm 
+              w-full max-w-xs transition-colors duration-300"
           >
             {/* Image */}
             <div className="overflow-hidden">
               <img
                 src={donation.image}
                 alt={donation.title}
-                className="w-full h-40 md:h-48 lg:h-80 object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-40 md:h-48 lg:h-80 object-cover 
+                  transition-transform duration-500 hover:scale-110"
               />
             </div>
 
             {/* Content */}
             <div className="p-4 md:p-5 lg:p-3 flex-1 flex flex-col justify-between space-y-2">
               <div className="space-y-1">
-                <h2 className="text-lg md:text-xl lg:text-base font-semibold text-gray-800 truncate">
+                <h2 className="text-lg md:text-xl lg:text-base font-semibold 
+                  text-gray-800 dark:text-gray-100 truncate">
                   {donation.title}
                 </h2>
 
-                <p className="text-gray-600 truncate">
+                <p className="text-gray-600 dark:text-gray-300 truncate">
                   <strong>Restaurant:</strong> {donation.restaurant_name}
                 </p>
-                <p className="text-gray-600 truncate">
+                <p className="text-gray-600 dark:text-gray-300 truncate">
                   <strong>Location:</strong> {donation.location}
                 </p>
-                <p className="text-gray-600 truncate">
+                <p className="text-gray-600 dark:text-gray-300 truncate">
                   <strong>Charity:</strong>{" "}
                   {donation.charityName ? donation.charityName : "Not Assigned Yet"}
                 </p>
 
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   <strong>Quantity:</strong> {donation.quantity}
                 </p>
 
                 <span
                   className={`inline-block mt-1 px-2 py-1 rounded-full text-xs md:text-sm font-medium ${
                     donation.status === "Verified"
-                      ? "bg-green-100 text-green-700"
-                      : "bg-yellow-100 text-yellow-800"
+                      ? "bg-green-100 text-green-700 dark:bg-green-800/30 dark:text-green-400"
+                      : "bg-yellow-100 text-yellow-800 dark:bg-yellow-800/30 dark:text-yellow-300"
                   }`}
                 >
                   {donation.status}
@@ -89,7 +99,12 @@ const AllDonations = () => {
               {/* Details Button */}
               <Link
                 to={`/donation-details/${donation._id}`}
-                className="mt-3 md:mt-4 inline-block text-center bg-primary text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold hover:bg-blue-600 transition text-xs md:text-sm"
+                className="mt-3 md:mt-4 inline-block text-center 
+                  bg-sky-500 dark:bg-[#435cd1] 
+                  text-white px-3 py-1.5 md:px-4 md:py-2 
+                  rounded-lg font-semibold 
+                  hover:bg-blue-600 dark:hover:bg-[#6f84f5] 
+                  transition text-xs md:text-sm"
               >
                 View Details
               </Link>

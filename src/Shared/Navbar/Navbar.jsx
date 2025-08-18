@@ -15,107 +15,93 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          isActive
-            ? "text-sky-600 underline font-semibold"
-            : "text-gray-600 hover:text-sky-600 font-semibold"
+      {["/", "/alldonation", "/dashboard", "/aboutus", "/donate"].map(
+        (path, i) => {
+          const names = [
+            "Home",
+            "All Donations",
+            "Dashboard",
+            "About us",
+            "Donation",
+          ];
+          return (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[#435cd1] underline font-semibold"
+                  : "text-[#0c0e18] hover:text-[#435cd1] dark:text-gray-200 dark:hover:text-[#8c9eee] font-semibold"
+              }
+            >
+              {names[i]}
+            </NavLink>
+          );
         }
-      >
-        Home
-      </NavLink>
-
-      <NavLink
-        to="/alldonation"
-        className={({ isActive }) =>
-          isActive
-            ? "text-sky-600 underline font-semibold"
-            : "text-gray-600 hover:text-sky-600 font-semibold"
-        }
-      >
-        All Donations
-      </NavLink>
-
-      <NavLink
-        to="/dashboard"
-        className={({ isActive }) =>
-          isActive
-            ? "text-sky-600 underline font-semibold"
-            : "text-gray-600 hover:text-sky-600 font-semibold"
-        }
-      >
-        Dashboard
-      </NavLink>
-      <NavLink
-        to="/aboutus"
-        className={({ isActive }) =>
-          isActive
-            ? "text-sky-600 underline font-semibold"
-            : "text-gray-600 hover:text-sky-600 font-semibold"
-        }
-      >
-        About us
-      </NavLink>
-      <NavLink
-        to="/donate"
-        className={({ isActive }) =>
-          isActive
-            ? "text-sky-600 underline font-semibold"
-            : "text-gray-600 hover:text-sky-600 font-semibold"
-        }
-      >
-        Donation
-      </NavLink>
+      )}
     </>
   );
+
   return (
-    <div className="sticky top-0 z-50 navbar bg-gray-200 text-gray-800 px-6 py-2.5 shadow-sm">
+    <div
+      className="sticky top-0 z-50 navbar 
+      bg-[#f1f3fa] text-[#0c0e18] 
+      dark:bg-[#1a1f3c]/95 dark:text-gray-100 
+      backdrop-blur-md shadow-sm transition-colors duration-300"
+    >
       <div className="navbar-start">
+        {/* Mobile Menu */}
         <div className="dropdown">
-          {
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
-            </div>
-          }
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 gap-2 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content 
+              bg-[#f1f3fa] dark:bg-[#1a1f3c] 
+              gap-2 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
         </div>
         <div className="hidden md:block">
-          <Logo></Logo>
+          <Logo />
         </div>
       </div>
-      <div className="navbar-center   hidden lg:flex lg:justify-evenly ">
+
+      {/* Center Links */}
+      <div className="navbar-center hidden lg:flex lg:justify-evenly">
         <ul className="menu gap-2 menu-horizontal px-1">{links}</ul>
       </div>
+
+      {/* Right Side */}
       <div className="navbar-end">
+        <button
+          onClick={toggleTheme}
+          className="cursor-pointer bg-[#8c9eee] dark:bg-[#435cd1] 
+                p-2 rounded-full text-[#0c0e18] dark:text-yellow-400 
+                hover:bg-[#4d6bf4] dark:hover:bg-[#8c9eee] transition-colors mr-2"
+        >
+          <Icon size={22} />
+        </button>
         {user ? (
           <div className="group flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="cursor-pointer dark:bg-[#334155] p-2 rounded-full dark:text-yellow-400 bg-[#2C2C2C]/70 text-black hover:bg-[#8fcca1]"
-            >
-              <Icon size={22} />
-            </button>
+            {/* Theme Toggle */}
 
+            {/* Avatar */}
             <div
               className="tooltip tooltip-bottom"
               data-tip={user?.displayName}
@@ -123,19 +109,23 @@ const Navbar = () => {
               <img
                 src={user?.photoURL}
                 alt="User Avatar"
-                className="w-10 h-10 rounded-full border-2 border-green-400"
+                className="w-10 h-10 rounded-full border-2 border-[#435cd1]"
               />
             </div>
+
+            {/* Logout */}
             <button
               onClick={handleLogout}
-              className="btn btn-primary hover:bg-sky-600"
+              className="btn bg-[#435cd1] hover:bg-[#4d6bf4] text-white border-none"
             >
               Logout
             </button>
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn btn-primary text-black">Login</button>
+            <button className="btn bg-[#435cd1] hover:bg-[#4d6bf4] text-white border-none">
+              Login
+            </button>
           </Link>
         )}
       </div>

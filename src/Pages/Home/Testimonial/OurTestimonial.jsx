@@ -24,13 +24,13 @@ const OurTestimonial = () => {
     ];
   
     return (
-      <section className="md:py-20 px-4 md:px-8 lg:px-16 py-10 my-10 bg-gray-50">
+      <section className="md:py-20 px-4 md:px-8 lg:px-16 py-10  bg-[#f1f3fa] dark:bg-[#0c0e18]">
         <div className="mx-auto ">
           <div className="p-5">
-            <h2 className="text-3xl md:text-4xl font-bold text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-[#435cd1] dark:text-[#8c9eee]">
               Our Testimonial
             </h2>
-            <p className="text-2xl font-semibold text-center">
+            <p className="text-2xl font-semibold text-center text-[#0c0e18]/80 dark:text-gray-300">
               Restaurants help us by providing a lot of food every day
             </p>
           </div>
@@ -40,7 +40,7 @@ const OurTestimonial = () => {
               
               <div
                 key={item.id}
-                className="p-10 flex items-center gap-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition duration-300"
+                className="p-10 flex items-center gap-4  rounded-xl shadow-xl hover:shadow-lg transition duration-300"
               >
                 
                 <img
@@ -49,7 +49,7 @@ const OurTestimonial = () => {
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <h3 className="text-lg font-semibold text-[#0c0e18]/80 dark:text-gray-300">{item.title}</h3>
                   <p className="text-sm text-gray-600">{item.desc} </p>
                   <a
                     href={item.site}

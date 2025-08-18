@@ -16,8 +16,8 @@ const ImpactOverview = () => {
       number: 3500,
       suffix: " kg",
       desc: "Across all partner restaurants",
-      bg: "bg-[#F0FDF4]",
-      color: "text-green-600",
+      bg: "bg-green-50 dark:bg-green-900/20",
+      color: "text-green-600 dark:text-green-400",
     },
     {
       id: 2,
@@ -26,8 +26,8 @@ const ImpactOverview = () => {
       number: 12000,
       suffix: "+",
       desc: "Families and individuals helped",
-      bg: "bg-[#EFF6FF]",
-      color: "text-blue-600",
+      bg: "bg-blue-50 dark:bg-blue-900/20",
+      color: "text-blue-600 dark:text-blue-400",
     },
     {
       id: 3,
@@ -36,8 +36,8 @@ const ImpactOverview = () => {
       number: 1.2,
       suffix: " Tons",
       desc: "Less food waste, cleaner air",
-      bg: "bg-[#FEF3C7]",
-      color: "text-yellow-700",
+      bg: "bg-yellow-50 dark:bg-yellow-900/20",
+      color: "text-yellow-700 dark:text-yellow-400",
       decimals: 1, // দশমিক দেখানোর জন্য
     },
     {
@@ -47,15 +47,18 @@ const ImpactOverview = () => {
       number: 85,
       suffix: "+",
       desc: "Restaurants, charities, and volunteers",
-      bg: "bg-[#F3E8FF]",
-      color: "text-purple-700",
+      bg: "bg-purple-50 dark:bg-purple-900/20",
+      color: "text-purple-700 dark:text-purple-400",
     },
   ];
 
   return (
-    <section ref={ref} className="md:py-20 py-10 px-6 md:px-16 bg-gray-50">
+    <section
+      ref={ref}
+      className="md:py-20 py-10 px-6 md:px-16 bg-[#f1f3fa] dark:bg-[#0c0e18] transition-colors duration-300"
+    >
       {/* Title */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#435cd1] dark:text-[#8c9eee] mb-12">
         Together, We're Making a Difference
       </h2>
 
@@ -67,10 +70,10 @@ const ImpactOverview = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: index * 0.2, duration: 0.6 }}
-            className={`${stat.bg} p-6 rounded-2xl shadow-md`}
+            className={`${stat.bg} p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
           >
             <div className="text-5xl mb-2">{stat.emoji}</div>
-            <h3 className="text-xl font-semibold text-gray-800">
+            <h3 className="text-xl font-semibold text-[#0c0e18] dark:text-gray-100">
               {stat.title}
             </h3>
             <p className={`text-3xl font-bold mt-2 ${stat.color}`}>
@@ -83,7 +86,9 @@ const ImpactOverview = () => {
               )}
               {stat.suffix}
             </p>
-            <p className="text-gray-600 mt-1 text-sm">{stat.desc}</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">
+              {stat.desc}
+            </p>
           </motion.div>
         ))}
       </div>

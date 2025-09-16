@@ -44,8 +44,8 @@ const Navbar = () => {
 
   return (
     <div
-      className="sticky top-0 z-50 navbar 
-      bg-[#f1f3fa] text-[#0c0e18] 
+      className="sticky top-0 z-50 navbar px-6
+      bg-[#7c7cda] text-[#0c0e18] 
       dark:bg-[#1a1f3c]/95 dark:text-gray-100 
       backdrop-blur-md shadow-sm transition-colors duration-300"
     >
@@ -91,7 +91,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <button
           onClick={toggleTheme}
-          className="cursor-pointer bg-[#8c9eee] dark:bg-[#435cd1] 
+          className="cursor-pointer bg-sky-500 dark:bg-sky-400 
                 p-2 rounded-full text-[#0c0e18] dark:text-yellow-400 
                 hover:bg-[#4d6bf4] dark:hover:bg-[#8c9eee] transition-colors mr-2"
         >
@@ -116,14 +116,14 @@ const Navbar = () => {
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className="btn bg-[#435cd1] hover:bg-[#4d6bf4] text-white border-none"
+              className="btn bg-sky-500 hover:bg-[#4d6bf4] text-white border-none"
             >
               Logout
             </button>
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn bg-[#435cd1] hover:bg-[#4d6bf4] text-white border-none">
+            <button className="btn bg-sky-500 hover:bg-[#4d6bf4] text-white border-none">
               Login
             </button>
           </Link>

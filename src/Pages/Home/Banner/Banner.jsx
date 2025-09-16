@@ -17,7 +17,7 @@ const Banner = () => {
             Your small contribution can make a big impact on someone’s life.
           </p>
           <Link to={"/donate"}>
-            <button className="mt-6 bg-sky-500 cursor-pointer text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition duration-300">
+            <button className="mt-6 bg-sky-500 btn border-none  cursor-pointer text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition duration-300">
               Donate Now
             </button>
           </Link>

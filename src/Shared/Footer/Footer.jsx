@@ -10,7 +10,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#7090fa] dark:bg-[#1a1f3c] text-[#0c0e18] dark:text-gray-200 px-6 py-8 md:py-12 transition-colors duration-300">
+    <footer className="bg-[#7c7cda] dark:bg-[#1a1f3c] text-[#0c0e18] dark:text-gray-200 px-6 py-8 md:py-12 transition-colors duration-300">
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
         {/* Column 1: Logo */}
         <div>
